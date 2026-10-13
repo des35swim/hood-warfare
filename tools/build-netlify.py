@@ -35,7 +35,8 @@ for f in os.listdir(os.path.join(ROOT, 'site')):
 add_dir('img/', 'site/img', keep=lambda f: f.endswith(('.webp', '.png')) or f == 'og.jpg')
 
 # --- game at /play ---
-add_file('play/index.html', 'index.html')
+# the game is published at /play/, so its site/leaderboard.html link must become ../leaderboard.html
+entries['play/index.html'] = (None, rd('index.html').replace('href="site/leaderboard.html"', 'href="../leaderboard.html"').encode('utf8'))
 add_dir('play/src/', 'src')
 add_file('play/vendor/three/three.module.js', 'vendor/three/three.module.js')
 add_file('play/vendor/three/three.core.js', 'vendor/three/three.core.js')

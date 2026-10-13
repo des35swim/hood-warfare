@@ -26,7 +26,6 @@ export function poll() {
   return { dx, dy };
 }
 function initTouch() {
-  document.getElementById('touch').classList.add('on');
   const hint = document.getElementById('hint'); if (hint) hint.innerHTML = '<b>TAP SWAP TO CYCLE GUNS</b> · AK-47 → MAC-10 → MP5 → M700 → RPG-7<br>Left thumb: move stick · right thumb: look · hold FIRE · tap AIM to toggle · 4 5 6 abilities';
   const stick = { id: null, x0: 0, y0: 0 }, look = { id: null, x: 0, y: 0 };
   const sEl = document.getElementById('stick'), knob = document.getElementById('knob');

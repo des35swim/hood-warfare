@@ -112,6 +112,7 @@ canvas#gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block
 #idrow input { font: 600 13px/1 'Barlow'; letter-spacing: .14em; text-transform: uppercase; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; padding: 11px 12px; width: min(200px, 44vw); outline: none; -webkit-user-select: text; user-select: text; }
 #idrow input:focus { border-color: #fff; }
 #idrow input::placeholder { color: #7f92a8; }
+@media (max-width: 420px) { #idrow input { letter-spacing: .08em; } }
 #ladder { display: block; margin-top: 14px; color: #ffd166 !important; text-decoration: none; pointer-events: auto; }
 /* end-of-match ladder: tier cards + top 10 */
 #lboard { display: none; margin: 16px auto 0; text-align: left; }
@@ -182,7 +183,7 @@ canvas#gl { position: fixed; inset: 0; width: 100%; height: 100%; display: block
     <div id="end"></div>
     <div class="msg" id="lmsg"></div>
     <div id="lboard"></div>
-    <div id="idrow"><input id="gname" maxlength="16" placeholder="GAMERTAG" autocomplete="off" spellcheck="false"><input id="gwallet" maxlength="44" placeholder="SOLANA WALLET (OPTIONAL)" autocomplete="off" spellcheck="false"></div>
+    <div id="idrow"><input id="gname" maxlength="16" placeholder="GAMERTAG" autocomplete="off" spellcheck="false"><input id="gwallet" maxlength="44" placeholder="WALLET (OPTIONAL)" title="Solana wallet (optional)" autocomplete="off" spellcheck="false"></div>
     <button id="go">Deploy</button>
     <a class="hint" id="ladder" href="site/leaderboard.html">WEEKLY LEADERBOARD →</a>
     <div class="hint" id="hint"><b>PRESS 2 TO ARM THE RPG-7</b> · 1 AK-47 · 3 MAC-10 · 7 MP5 · 8 M700 sniper · Q or mouse wheel cycles<br>WASD move · mouse aim · click fire · R reload · Shift sprint · Space jump · C crouch · 4 5 6 abilities · M mute</div>

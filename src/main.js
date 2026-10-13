@@ -161,7 +161,7 @@ function useAbility(n) {
   if (n == 6) { hud.callout('BOMBER SENT', 'HE RUNS AT THE NEAREST OPP'); const p = freeCellNear(player.pos.x, player.pos.z + 2, 3); const b = new Bot(ctx, trooper, 'blue', p, { kind: 'bomber', owner: player, expires: time + 25, name: 'Bomber', speed: 5 }); b.lastSeen = ctx.hotspot('blue'); bots.push(b); }
 }
 function endMatch() {
-  MATCH.over = true; const win = score.blue > score.red; if (win) sfx.victory(); else sfx.defeat(); $('ov').classList.remove('off'); $('end').textContent = win ? 'VICTORY' : score.blue === score.red ? 'DRAW' : 'DEFEAT';
+  MATCH.over = true; $('touch').classList.remove('on'); const win = score.blue > score.red; if (win) sfx.victory(); else sfx.defeat(); $('ov').classList.remove('off'); $('end').textContent = win ? 'VICTORY' : score.blue === score.red ? 'DRAW' : 'DEFEAT';
   $('pmsg').textContent = `BLUE ${score.blue} · RED ${score.red} · YOU ${player.kills} KILLS / ${player.deaths} DEATHS`; $('go').textContent = 'Run it back'; $('go').classList.add('on'); $('hint').textContent = '';
   submitMatch();
   if (document.exitPointerLock) document.exitPointerLock();
@@ -172,7 +172,7 @@ function startMatch() {
   for (let i = 0; i < 5; i++) bots.push(new Bot(ctx, trooper, 'blue', spawnPoint('blue')));
   for (let i = 0; i < 6; i++) bots.push(new Bot(ctx, trooper, 'red', spawnPoint('red')));
   player.respawn(spawnPoint('blue')); for (const k in guns) { const g = guns[k]; g.mag = g.magSize; g.reserve = g.spec.reserve; g.holstered = k !== 'ak'; g.reloading = 0; } launcher.loaded = 1; launcher.reserve = 3; arsenal.cur = 'ak'; player.kills = 0; player.deaths = 0;
-  hud.score(0, 0); $('ov').classList.add('off'); $('lmsg').textContent = ''; $('lboard').classList.remove('on'); requestLock(); unlockAudio();
+  hud.score(0, 0); $('ov').classList.add('off'); $('lmsg').textContent = ''; $('lboard').classList.remove('on'); requestLock(); unlockAudio(); if (TOUCH) $('touch').classList.add('on');
   setTimeout(() => { if (MATCH.started && !MATCH.over) hud.callout(Q.mobile ? 'TAP SWAP TO CYCLE GUNS' : 'PRESS 2 TO ARM THE RPG-7', Q.mobile ? 'MAC-10 · MP5 · M700 · RPG-7' : '3 MAC-10 · 7 MP5 · 8 SNIPER · Q CYCLES'); }, 1800);
 }
 
